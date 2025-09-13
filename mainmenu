@@ -1,8 +1,8 @@
 local WindUI = (loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua")))();
 local Window = WindUI:CreateWindow({
-	Title = "Relz Hub",
+	Title = "Grai Hub",
 	Author = "Blox Fruit",
-	Folder = "Relz",
+	Folder = "Grai",
 	Size = UDim2.fromOffset(520, 300),
 	Transparent = true,
 	Theme = "Dark",
@@ -10,7 +10,7 @@ local Window = WindUI:CreateWindow({
 	HasOutline = false,
 });
 Window:EditOpenButton({
-	Title = "Relz Hub",
+	Title = "Grai Hub",
 	CornerRadius = UDim.new(0, 10),
 	Draggable = false
 });
