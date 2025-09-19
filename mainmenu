@@ -1,5 +1,59 @@
+
+-- Load Fluent Library
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local Window = WindUI:CreateWindow({
+
+-- Tạo cửa sổ
+local Window = Fluent:CreateWindow({
+    Title = "GRAI Hub | Blox Fruit",
+    SubTitle = "Fluent UI Demo",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 400),
+    Acrylic = true,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.RightControl
+})
+
+-- Tab chính
+local MainTab = Window:AddTab({ Title = "Main", Icon = "rbxassetid://10734950020" })
+
+-- Nút bấm
+MainTab:AddButton({
+    Title = "🚀 Test Button",
+    Description = "Nhấn để in ra console",
+    Callback = function()
+        print("Nút Test đã được nhấn!")
+        Fluent:Notify({
+            Title = "Thông báo",
+            Content = "Bạn vừa nhấn nút Test 🚀",
+            Duration = 3
+        })
+    end
+})
+
+-- Toggle
+MainTab:AddToggle("AutoFarm", { Title = "⚡ Auto Farm", Default = false })
+    :OnChanged(function(state)
+        _G.AutoFarm = state
+        print("AutoFarm:", state)
+    end)
+
+-- Dropdown
+MainTab:AddDropdown("Team", {
+    Title = "Chọn Team",
+    Values = { "Pirates", "Marines" },
+    Default = "Pirates"
+})
+:OnChanged(function(value)
+    print("Team chọn:", value)
+end)
+
+-- Notify khi load
+Fluent:Notify({
+    Title = "GRAI Hub",
+    Content = "✅ UI Fluent đã bật!",
+    Duration = 5
+})
+
 	Title = "Grai Hub",
 	Author = "Make By Grai Béo",
 	Folder = "",
