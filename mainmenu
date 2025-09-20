@@ -1,13 +1,46 @@
--- Tạo window bằng RedzLib
-local Window = redzlib:MakeWindow({
-    Title = "Grai Hub",
-    SubTitle = "Make By Grai Béo",
-    SaveFolder = "Grai Config"
-})
--- Load RedzLib
+-- Đảm bảo _G.Settings được định nghĩa trước
+if not _G.Settings then
+    _G.Settings = {
+        Main = {
+            ["Select Weapon"] = "Melee",
+            ["Farm Level Method"] = "Quest",
+            ["Auto Farm"] = false,
+            ["Auto Fast Farm"] = false,
+            ["Mastery Method"] = "Quest",
+            ["Auto Farm Fruit Mastery"] = false,
+            ["Auto Farm Gun Mastery"] = false,
+            ["Selected Mastery Sword"] = nil,
+            ["Auto Farm Sword Mastery"] = false,
+            ["Auto Summon Tyrant Of The Skies"] = false,
+            ["Auto Kill Tyrant Of The Skies"] = false,
+            ["Selected Mon"] = nil,
+            ["Auto Farm Mon"] = false,
+            ["Selected Boss"] = nil,
+            ["Auto Farm Boss"] = false,
+            ["Auto Farm All Boss"] = false
+        },
+        Setting = {
+            ["Farm Distance"] = 35,
+            ["Player Tween Speed"] = 350,
+            ["Bring Mob"] = true,
+            ["Bring Mob Mode"] = "Normal",
+            ["Fast Attack"] = true,
+            ["Fast Attack Mode"] = "Normal",
+            ["Attack Aura"] = true,
+            ["Hide Notification"] = false,
+            ["Hide Damage Text"] = true,
+            ["Mastery Health"] = 25,
+            ["Auto Haki"] = true,
+            ["Auto Rejoin"] = true
+        }
+        -- bạn có thể thêm các nhóm khác như Stats, Esp, Items nếu muốn
+    }
+end
+
+-- Load thư viện RedzLib
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
 
--- Tạo cửa sổ
+-- Tạo window
 local Window = redzlib:MakeWindow({
     Title = "Grai Hub",
     SubTitle = "Make By Grai Béo",
@@ -26,9 +59,7 @@ local TabSetting = Window:MakeTab({
     Icon = "rbxassetid://7733779301"
 })
 
---========================================================--
--- AUTO FARM (Main)
---========================================================--
+-- ========== Nội dung TabFarm ==========
 
 TabFarm:AddDropdown({
     Name = "Select Weapon",
@@ -121,9 +152,7 @@ TabFarm:AddToggle({
     end
 })
 
---========================================================--
--- SETTINGS
---========================================================--
+-- ========== Nội dung TabSetting ==========
 
 TabSetting:AddSlider({
     Name = "Farm Distance",
@@ -231,233 +260,7 @@ TabSetting:AddToggle({
         _G.Settings.Setting["Auto Rejoin"] = Value
     end
 })
--- Load RedzLib
-local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
 
--- Tạo cửa sổ
-local Window = redzlib:MakeWindow({
-    Title = "Grai Hub",
-    SubTitle = "Make By Grai Béo",
-    SaveFolder = "Grai Config"
-})
-
--- Tạo tab Auto Farm
-local TabFarm = Window:MakeTab({
-    Name = "Auto Farm",
-    Icon = "rbxassetid://7734053429"
-})
-
--- Tạo tab Settings
-local TabSetting = Window:MakeTab({
-    Name = "Settings",
-    Icon = "rbxassetid://7733779301"
-})
-
---========================================================--
--- AUTO FARM (Main)
---========================================================--
-
-TabFarm:AddDropdown({
-    Name = "Select Weapon",
-    Options = {"Melee","Sword","Gun"},
-    Default = _G.Settings.Main["Select Weapon"],
-    Callback = function(Value)
-        _G.Settings.Main["Select Weapon"] = Value
-    end
-})
-
-TabFarm:AddDropdown({
-    Name = "Farm Level Method",
-    Options = {"Quest","No Quest"},
-    Default = _G.Settings.Main["Farm Level Method"],
-    Callback = function(Value)
-        _G.Settings.Main["Farm Level Method"] = Value
-    end
-})
-
-TabFarm:AddToggle({
-    Name = "Auto Farm",
-    Default = _G.Settings.Main["Auto Farm"],
-    Callback = function(Value)
-        _G.Settings.Main["Auto Farm"] = Value
-    end
-})
-
-TabFarm:AddToggle({
-    Name = "Auto Fast Farm",
-    Default = _G.Settings.Main["Auto Fast Farm"],
-    Callback = function(Value)
-        _G.Settings.Main["Auto Fast Farm"] = Value
-    end
-})
-
-TabFarm:AddDropdown({
-    Name = "Mastery Method",
-    Options = {"Quest","No Quest"},
-    Default = _G.Settings.Main["Mastery Method"],
-    Callback = function(Value)
-        _G.Settings.Main["Mastery Method"] = Value
-    end
-})
-
-TabFarm:AddToggle({
-    Name = "Auto Farm Fruit Mastery",
-    Default = _G.Settings.Main["Auto Farm Fruit Mastery"],
-    Callback = function(Value)
-        _G.Settings.Main["Auto Farm Fruit Mastery"] = Value
-    end
-})
-
-TabFarm:AddToggle({
-    Name = "Auto Farm Gun Mastery",
-    Default = _G.Settings.Main["Auto Farm Gun Mastery"],
-    Callback = function(Value)
-        _G.Settings.Main["Auto Farm Gun Mastery"] = Value
-    end
-})
-
-TabFarm:AddToggle({
-    Name = "Auto Farm Sword Mastery",
-    Default = _G.Settings.Main["Auto Farm Sword Mastery"],
-    Callback = function(Value)
-        _G.Settings.Main["Auto Farm Sword Mastery"] = Value
-    end
-})
-
-TabFarm:AddToggle({
-    Name = "Auto Farm Mon",
-    Default = _G.Settings.Main["Auto Farm Mon"],
-    Callback = function(Value)
-        _G.Settings.Main["Auto Farm Mon"] = Value
-    end
-})
-
-TabFarm:AddToggle({
-    Name = "Auto Farm Boss",
-    Default = _G.Settings.Main["Auto Farm Boss"],
-    Callback = function(Value)
-        _G.Settings.Main["Auto Farm Boss"] = Value
-    end
-})
-
-TabFarm:AddToggle({
-    Name = "Auto Farm All Boss",
-    Default = _G.Settings.Main["Auto Farm All Boss"],
-    Callback = function(Value)
-        _G.Settings.Main["Auto Farm All Boss"] = Value
-    end
-})
-
---========================================================--
--- SETTINGS
---========================================================--
-
-TabSetting:AddSlider({
-    Name = "Farm Distance",
-    Min = 10,
-    Max = 100,
-    Increase = 1,
-    Default = _G.Settings.Setting["Farm Distance"],
-    Callback = function(Value)
-        _G.Settings.Setting["Farm Distance"] = Value
-    end
-})
-
-TabSetting:AddSlider({
-    Name = "Player Tween Speed",
-    Min = 50,
-    Max = 600,
-    Increase = 10,
-    Default = _G.Settings.Setting["Player Tween Speed"],
-    Callback = function(Value)
-        _G.Settings.Setting["Player Tween Speed"] = Value
-    end
-})
-
-TabSetting:AddToggle({
-    Name = "Bring Mob",
-    Default = _G.Settings.Setting["Bring Mob"],
-    Callback = function(Value)
-        _G.Settings.Setting["Bring Mob"] = Value
-    end
-})
-
-TabSetting:AddDropdown({
-    Name = "Bring Mob Mode",
-    Options = {"Normal","Fast","Instant"},
-    Default = _G.Settings.Setting["Bring Mob Mode"],
-    Callback = function(Value)
-        _G.Settings.Setting["Bring Mob Mode"] = Value
-    end
-})
-
-TabSetting:AddToggle({
-    Name = "Fast Attack",
-    Default = _G.Settings.Setting["Fast Attack"],
-    Callback = function(Value)
-        _G.Settings.Setting["Fast Attack"] = Value
-    end
-})
-
-TabSetting:AddDropdown({
-    Name = "Fast Attack Mode",
-    Options = {"Normal","Fast","Super"},
-    Default = _G.Settings.Setting["Fast Attack Mode"],
-    Callback = function(Value)
-        _G.Settings.Setting["Fast Attack Mode"] = Value
-    end
-})
-
-TabSetting:AddToggle({
-    Name = "Attack Aura",
-    Default = _G.Settings.Setting["Attack Aura"],
-    Callback = function(Value)
-        _G.Settings.Setting["Attack Aura"] = Value
-    end
-})
-
-TabSetting:AddToggle({
-    Name = "Hide Notification",
-    Default = _G.Settings.Setting["Hide Notification"],
-    Callback = function(Value)
-        _G.Settings.Setting["Hide Notification"] = Value
-    end
-})
-
-TabSetting:AddToggle({
-    Name = "Hide Damage Text",
-    Default = _G.Settings.Setting["Hide Damage Text"],
-    Callback = function(Value)
-        _G.Settings.Setting["Hide Damage Text"] = Value
-    end
-})
-
-TabSetting:AddSlider({
-    Name = "Mastery Health %",
-    Min = 5,
-    Max = 100,
-    Increase = 5,
-    Default = _G.Settings.Setting["Mastery Health"],
-    Callback = function(Value)
-        _G.Settings.Setting["Mastery Health"] = Value
-    end
-})
-
-TabSetting:AddToggle({
-    Name = "Auto Haki",
-    Default = _G.Settings.Setting["Auto Haki"],
-    Callback = function(Value)
-        _G.Settings.Setting["Auto Haki"] = Value
-    end
-})
-
-TabSetting:AddToggle({
-    Name = "Auto Rejoin",
-    Default = _G.Settings.Setting["Auto Rejoin"],
-    Callback = function(Value)
-        _G.Settings.Setting["Auto Rejoin"] = Value
-    end
-})
 
 (getgenv()).Load = function()
 	if readfile and writefile and isfile and isfolder then
