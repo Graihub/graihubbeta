@@ -1,5 +1,5 @@
 -- CONFIG: set core URL if you want remote load
-local CORE_RAW_URL = "PASTE_GRAIMAIN_RAW_URL_HERE" -- replace with raw file URL if needed
+local CORE_RAW_URL = "https://raw.githubusercontent.com/Graihub/graihubbeta/refs/heads/main/mainmenu" 
 -- --------------------
 
 -- Load RedzLib (same as original)
