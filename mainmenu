@@ -1,267 +1,350 @@
--- Đảm bảo _G.Settings được định nghĩa trước
-if not _G.Settings then
-    _G.Settings = {
-        Main = {
-            ["Select Weapon"] = "Melee",
-            ["Farm Level Method"] = "Quest",
-            ["Auto Farm"] = false,
-            ["Auto Fast Farm"] = false,
-            ["Mastery Method"] = "Quest",
-            ["Auto Farm Fruit Mastery"] = false,
-            ["Auto Farm Gun Mastery"] = false,
-            ["Selected Mastery Sword"] = nil,
-            ["Auto Farm Sword Mastery"] = false,
-            ["Auto Summon Tyrant Of The Skies"] = false,
-            ["Auto Kill Tyrant Of The Skies"] = false,
-            ["Selected Mon"] = nil,
-            ["Auto Farm Mon"] = false,
-            ["Selected Boss"] = nil,
-            ["Auto Farm Boss"] = false,
-            ["Auto Farm All Boss"] = false
-        },
-        Setting = {
-            ["Farm Distance"] = 35,
-            ["Player Tween Speed"] = 350,
-            ["Bring Mob"] = true,
-            ["Bring Mob Mode"] = "Normal",
-            ["Fast Attack"] = true,
-            ["Fast Attack Mode"] = "Normal",
-            ["Attack Aura"] = true,
-            ["Hide Notification"] = false,
-            ["Hide Damage Text"] = true,
-            ["Mastery Health"] = 25,
-            ["Auto Haki"] = true,
-            ["Auto Rejoin"] = true
-        }
-        -- bạn có thể thêm các nhóm khác như Stats, Esp, Items nếu muốn
-    }
-end
+-- Load RedzLib
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/Library-ui/refs/heads/main/Redzhubui"))()
 
--- Load thư viện RedzLib
-local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
-
--- Tạo window
+-- Tạo Window chính
 local Window = redzlib:MakeWindow({
-    Title = "Grai Hub",
-    SubTitle = "Make By Grai Béo",
-    SaveFolder = "Grai Config"
+    Title = "Tên Script",
+    SubTitle = "Bờ Lốc Phút",
+    SaveFolder = "GraihubSave"
 })
 
--- Tạo tab Auto Farm
-local TabFarm = Window:MakeTab({
-    Name = "Auto Farm",
-    Icon = "rbxassetid://7734053429"
-})
+-- Tạo các Tab (theo file gốc)
+local Tabs = {
+    InfoTab = Window:MakeTab({
+        Name = "Thông Tin",
+        Icon = "rbxassetid://7734053425"
+    }),
+    MainTab = Window:MakeTab({
+        Name = "Cày",
+        Icon = "rbxassetid://7734053425"
+    }),
+    OthersTab = Window:MakeTab({
+        Name = "Khác",
+        Icon = "rbxassetid://7734053425"
+    }),
+    ItemsTab = Window:MakeTab({
+        Name = "Vật Phẩm",
+        Icon = "rbxassetid://7734053425"
+    }),
+    SettingsTab = Window:MakeTab({
+        Name = "Cài Đặt",
+        Icon = "rbxassetid://7734053425"
+    }),
+    LocalPlayerTab = Window:MakeTab({
+        Name = "Người Chơi",
+        Icon = "rbxassetid://7734053425"
+    }),
+    StatsTab = Window:MakeTab({
+        Name = "Chỉ Số",
+        Icon = "rbxassetid://7734053425"
+    }),
+    SeaEventTab = Window:MakeTab({
+        Name = "Sự Kiện Biển",
+        Icon = "rbxassetid://7734053425"
+    }),
+    SeaStackTab = Window:MakeTab({
+        Name = "Đá Biển",
+        Icon = "rbxassetid://7734053425"
+    }),
+    SeaSettingsTab = Window:MakeTab({
+        Name = "Cài Đặt Cày Biển",
+        Icon = "rbxassetid://7734053425"
+    }),
+    DragonDojoTab = Window:MakeTab({
+        Name = "Võ Đường Rồng",
+        Icon = "rbxassetid://7734053425"
+    }),
+    RaceTab = Window:MakeTab({
+        Name = "Tộc",
+        Icon = "rbxassetid://7734053425"
+    }),
+    CombatTab = Window:MakeTab({
+        Name = "Đấm Nhau",
+        Icon = "rbxassetid://7734053425"
+    }),
+    RaidTab = Window:MakeTab({
+        Name = "Tập Kích",
+        Icon = "rbxassetid://7734053425"
+    }),
+    EspTab = Window:MakeTab({
+        Name = "Nhìn",
+        Icon = "rbxassetid://7734053425"
+    }),
+    TeleportTab = Window:MakeTab({
+        Name = "Dịch Chuyển",
+        Icon = "rbxassetid://7734053425"
+    }),
+    ShopTab = Window:MakeTab({
+        Name = "Shopping",
+        Icon = "rbxassetid://7734053425"
+    }),
+    FruitTab = Window:MakeTab({
+        Name = "Trái Cây",
+        Icon = "rbxassetid://7734053425"
+    }),
+    MiscTab = Window:MakeTab({
+        Name = "Xàm",
+        Icon = "rbxassetid://7734053425"
+    }),
+    ServerTab = Window:MakeTab({
+        Name = "Máy Chủ",
+        Icon = "rbxassetid://7734053425"
+    })
+}
 
--- Tạo tab Settings
-local TabSetting = Window:MakeTab({
-    Name = "Settings",
-    Icon = "rbxassetid://7733779301"
-})
-
--- ========== Nội dung TabFarm ==========
-
-TabFarm:AddDropdown({
-    Name = "Select Weapon",
-    Options = {"Melee","Sword","Gun"},
-    Default = _G.Settings.Main["Select Weapon"],
-    Callback = function(Value)
-        _G.Settings.Main["Select Weapon"] = Value
-    end
-})
-
-TabFarm:AddDropdown({
-    Name = "Farm Level Method",
-    Options = {"Quest","No Quest"},
-    Default = _G.Settings.Main["Farm Level Method"],
-    Callback = function(Value)
-        _G.Settings.Main["Farm Level Method"] = Value
-    end
-})
-
-TabFarm:AddToggle({
+-- Ví dụ thêm Toggle vào MainTab
+Tabs.MainTab:AddToggle({
     Name = "Auto Farm",
     Default = _G.Settings.Main["Auto Farm"],
-    Callback = function(Value)
-        _G.Settings.Main["Auto Farm"] = Value
+    Callback = function(v)
+        _G.Settings.Main["Auto Farm"] = v
     end
 })
 
-TabFarm:AddToggle({
-    Name = "Auto Fast Farm",
-    Default = _G.Settings.Main["Auto Fast Farm"],
-    Callback = function(Value)
-        _G.Settings.Main["Auto Fast Farm"] = Value
+-- Ví dụ thêm Dropdown chọn vũ khí
+Tabs.MainTab:AddDropdown({
+    Name = "Select Weapon",
+    Default = _G.Settings.Main["Select Weapon"],
+    Options = {"Melee", "Sword", "Gun", "Fruit"},
+    Callback = function(v)
+        _G.Settings.Main["Select Weapon"] = v
     end
 })
 
-TabFarm:AddDropdown({
-    Name = "Mastery Method",
-    Options = {"Quest","No Quest"},
-    Default = _G.Settings.Main["Mastery Method"],
-    Callback = function(Value)
-        _G.Settings.Main["Mastery Method"] = Value
-    end
-})
-
-TabFarm:AddToggle({
-    Name = "Auto Farm Fruit Mastery",
-    Default = _G.Settings.Main["Auto Farm Fruit Mastery"],
-    Callback = function(Value)
-        _G.Settings.Main["Auto Farm Fruit Mastery"] = Value
-    end
-})
-
-TabFarm:AddToggle({
-    Name = "Auto Farm Gun Mastery",
-    Default = _G.Settings.Main["Auto Farm Gun Mastery"],
-    Callback = function(Value)
-        _G.Settings.Main["Auto Farm Gun Mastery"] = Value
-    end
-})
-
-TabFarm:AddToggle({
-    Name = "Auto Farm Sword Mastery",
-    Default = _G.Settings.Main["Auto Farm Sword Mastery"],
-    Callback = function(Value)
-        _G.Settings.Main["Auto Farm Sword Mastery"] = Value
-    end
-})
-
-TabFarm:AddToggle({
-    Name = "Auto Farm Mon",
-    Default = _G.Settings.Main["Auto Farm Mon"],
-    Callback = function(Value)
-        _G.Settings.Main["Auto Farm Mon"] = Value
-    end
-})
-
-TabFarm:AddToggle({
-    Name = "Auto Farm Boss",
-    Default = _G.Settings.Main["Auto Farm Boss"],
-    Callback = function(Value)
-        _G.Settings.Main["Auto Farm Boss"] = Value
-    end
-})
-
-TabFarm:AddToggle({
-    Name = "Auto Farm All Boss",
-    Default = _G.Settings.Main["Auto Farm All Boss"],
-    Callback = function(Value)
-        _G.Settings.Main["Auto Farm All Boss"] = Value
-    end
-})
-
--- ========== Nội dung TabSetting ==========
-
-TabSetting:AddSlider({
-    Name = "Farm Distance",
-    Min = 10,
-    Max = 100,
-    Increase = 1,
-    Default = _G.Settings.Setting["Farm Distance"],
-    Callback = function(Value)
-        _G.Settings.Setting["Farm Distance"] = Value
-    end
-})
-
-TabSetting:AddSlider({
-    Name = "Player Tween Speed",
-    Min = 50,
-    Max = 600,
-    Increase = 10,
-    Default = _G.Settings.Setting["Player Tween Speed"],
-    Callback = function(Value)
-        _G.Settings.Setting["Player Tween Speed"] = Value
-    end
-})
-
-TabSetting:AddToggle({
-    Name = "Bring Mob",
-    Default = _G.Settings.Setting["Bring Mob"],
-    Callback = function(Value)
-        _G.Settings.Setting["Bring Mob"] = Value
-    end
-})
-
-TabSetting:AddDropdown({
-    Name = "Bring Mob Mode",
-    Options = {"Normal","Fast","Instant"},
-    Default = _G.Settings.Setting["Bring Mob Mode"],
-    Callback = function(Value)
-        _G.Settings.Setting["Bring Mob Mode"] = Value
-    end
-})
-
-TabSetting:AddToggle({
-    Name = "Fast Attack",
-    Default = _G.Settings.Setting["Fast Attack"],
-    Callback = function(Value)
-        _G.Settings.Setting["Fast Attack"] = Value
-    end
-})
-
-TabSetting:AddDropdown({
-    Name = "Fast Attack Mode",
-    Options = {"Normal","Fast","Super"},
-    Default = _G.Settings.Setting["Fast Attack Mode"],
-    Callback = function(Value)
-        _G.Settings.Setting["Fast Attack Mode"] = Value
-    end
-})
-
-TabSetting:AddToggle({
-    Name = "Attack Aura",
-    Default = _G.Settings.Setting["Attack Aura"],
-    Callback = function(Value)
-        _G.Settings.Setting["Attack Aura"] = Value
-    end
-})
-
-TabSetting:AddToggle({
-    Name = "Hide Notification",
-    Default = _G.Settings.Setting["Hide Notification"],
-    Callback = function(Value)
-        _G.Settings.Setting["Hide Notification"] = Value
-    end
-})
-
-TabSetting:AddToggle({
-    Name = "Hide Damage Text",
-    Default = _G.Settings.Setting["Hide Damage Text"],
-    Callback = function(Value)
-        _G.Settings.Setting["Hide Damage Text"] = Value
-    end
-})
-
-TabSetting:AddSlider({
-    Name = "Mastery Health %",
-    Min = 5,
-    Max = 100,
-    Increase = 5,
-    Default = _G.Settings.Setting["Mastery Health"],
-    Callback = function(Value)
-        _G.Settings.Setting["Mastery Health"] = Value
-    end
-})
-
-TabSetting:AddToggle({
-    Name = "Auto Haki",
-    Default = _G.Settings.Setting["Auto Haki"],
-    Callback = function(Value)
-        _G.Settings.Setting["Auto Haki"] = Value
-    end
-})
-
-TabSetting:AddToggle({
-    Name = "Auto Rejoin",
-    Default = _G.Settings.Setting["Auto Rejoin"],
-    Callback = function(Value)
-        _G.Settings.Setting["Auto Rejoin"] = Value
-    end
-})
-
-
+Window:SelectTab(1);
+_G.Settings = {
+	Main = {
+		["Select Weapon"] = "Melee",
+		["Farm Level Method"] = "Quest",
+		["Auto Farm"] = false,
+		["Auto Fast Farm"] = false,
+		["Mastery Method"] = "Quest",
+		["Auto Farm Fruit Mastery"] = false,
+		["Auto Farm Gun Mastery"] = false,
+		["Selected Mastery Sword"] = nil,
+		["Auto Farm Sword Mastery"] = false,
+		["Auto Summon Tyrant Of The Skies"] = false,
+		["Auto Kill Tyrant Of The Skies"] = false,
+		["Selected Mon"] = nil,
+		["Auto Farm Mon"] = false,
+		["Selected Boss"] = nil,
+		["Auto Farm Boss"] = false,
+		["Auto Farm All Boss"] = false
+	},
+	Event = {},
+	Farm = {
+		["Auto Elite Hunter"] = false,
+		["Auto Elite Hunter Hop"] = false,
+		["Selected Bone Farm Method"] = "Quest",
+		["Auto Farm Bone"] = false,
+		["Auto Random Surprise"] = false,
+		["Auto Pirate Raid"] = false,
+		["Auto Farm Chest Tween"] = false,
+		["Auto Farm Chest Instant"] = false,
+		["Auto Chest Hop"] = false,
+		["Auto Farm Chest Mirage"] = false,
+		["Auto Stop Items"] = false,
+		["Auto Farm Katakuri"] = false,
+		["Auto Spawn Cake Prince"] = false,
+		["Auto Kill Cake Prince"] = false,
+		["Auto Kill Dough King"] = false,
+		["Selected Material"] = nil,
+		["Auto Farm Material"] = false
+	},
+	Setting = {
+		["Spin Position"] = false,
+		["Farm Distance"] = 35,
+		["Player Tween Speed"] = 350,
+		["Bring Mob"] = true,
+		["Bring Mob Mode"] = "Normal",
+		["Fast Attack"] = true,
+		["Fast Attack Mode"] = "Normal",
+		["Attack Aura"] = true,
+		["Hide Notification"] = false,
+		["Hide Damage Text"] = true,
+		["Black Screen"] = false,
+		["White Screen"] = false,
+		["Hide Monster"] = false,
+		["Mastery Health"] = 25,
+		["Fruit Mastery Skill Z"] = true,
+		["Fruit Mastery Skill X"] = true,
+		["Fruit Mastery Skill C"] = true,
+		["Fruit Mastery Skill V"] = false,
+		["Fruit Mastery Skill F"] = false,
+		["Gun Mastery Skill Z"] = true,
+		["Gun Mastery Skill X"] = true,
+		["Auto Set Spawn Point"] = true,
+		["Auto Observation"] = false,
+		["Auto Haki"] = true,
+		["Auto Rejoin"] = true
+	},
+	Stats = {
+		["Auto Add Melee Stats"] = false,
+		["Auto Add Defense Stats"] = false,
+		["Auto Add Devil Fruit Stats"] = false,
+		["Auto Add Sword Stats"] = false,
+		["Auto Add Gun Stats"] = false,
+		["Point Stats"] = 1
+	},
+	Items = {
+		["Auto Second Sea"] = false,
+		["Auto Third Sea"] = false,
+		["Auto Farm Factory"] = false,
+		["Auto Super Human"] = false,
+		["Auto Death Step"] = false,
+		["Auto Fishman Karate"] = false,
+		["Auto Electric Claw"] = false,
+		["Auto Dragon Talon"] = false,
+		["Auto God Human"] = false,
+		["Auto Saber"] = false,
+		["Auto Buddy Sword"] = false,
+		["Auto Soul Guitar"] = false,
+		["Auto Rengoku"] = false,
+		["Auto Hallow Scythe"] = false,
+		["Auto Warden Sword"] = false,
+		["Auto Cursed Dual Katana"] = false,
+		["Auto Yama"] = false,
+		["Auto Tushita"] = false,
+		["Auto Canvander"] = false,
+		["Auto Dragon Trident"] = false,
+		["Auto Pole"] = false,
+		["Auto Shawk Saw"] = false,
+		["Auto Greybeard"] = false,
+		["Auto Swan Glasses"] = false,
+		["Auto Arena Trainer"] = false,
+		["Auto Dark Dagger"] = false,
+		["Auto Press Haki Button"] = false,
+		["Auto Rainbow Haki"] = false,
+		["Auto Holy Torch"] = false,
+		["Auto Bartilo Quest"] = false
+	},
+	Esp = {
+		["ESP Player"] = false,
+		["ESP Chest"] = false,
+		["ESP DevilFruit"] = false,
+		["ESP RealFruit"] = false,
+		["ESP Flower"] = false,
+		["ESP Island"] = false,
+		["ESP Npc"] = false,
+		["ESP Sea Beast"] = false,
+		["ESP Monster"] = false,
+		["ESP Mirage"] = false,
+		["ESP Kitsune"] = false,
+		["ESP Frozen"] = false,
+		["ESP Advanced Fruit Dealer"] = false,
+		["ESP Aura"] = false,
+		["ESP Gear"] = false
+	},
+	DragonDojo = {
+		["Auto Farm Blaze Ember"] = false,
+		["Auto Collect Blaze Ember"] = false
+	},
+	SeaEvent = {
+		["Selected Boat"] = "Guardian",
+		["Selected Zone"] = "Zone 5",
+		["Boat Tween Speed"] = 300,
+		["Sail Boat"] = false,
+		["Auto Farm Shark"] = true,
+		["Auto Farm Piranha"] = true,
+		["Auto Farm Fish Crew Member"] = true,
+		["Auto Farm Ghost Ship"] = true,
+		["Auto Farm Pirate Brigade"] = true,
+		["Auto Farm Pirate Grand Brigade"] = true,
+		["Auto Farm Terrorshark"] = true,
+		["Auto Farm Seabeasts"] = true,
+		["Dodge Seabeasts Attack"] = true,
+		["Dodge Terrorshark Attack"] = true
+	},
+	SettingSea = {
+		Lightning = false,
+		["Increase Boat Speed"] = false,
+		["No Clip Rock"] = false,
+		["Use Devil Fruit Skill"] = true,
+		["Use Melee Skill"] = true,
+		["Use Sword Skill"] = true,
+		["Use Gun Skill"] = true,
+		["Devil Fruit Z Skill"] = true,
+		["Devil Fruit X Skill"] = true,
+		["Devil Fruit C Skill"] = true,
+		["Devil Fruit V Skill"] = false,
+		["Devil Fruit F Skill"] = false,
+		["Melee Z Skill"] = true,
+		["Melee X Skill"] = true,
+		["Melee C Skill"] = true,
+		["Melee V Skill"] = true
+	},
+	SeaStack = {
+		["Tween To Frozen Dimension"] = false,
+		["Summon Frozen Dimension"] = false,
+		["Tween To Kitsune Island"] = false,
+		["Summon Kitsune Island"] = false,
+		["Auto Collect Azure Ember"] = false,
+		["Set Azure Ember"] = 20,
+		["Auto Trade Azure Ember"] = false,
+		["Tween To Mirage Island"] = false,
+		["Teleport To Advanced Fruit Dealer"] = false,
+		["Auto Attack Seabeasts"] = false,
+		["Summon Prehistoric Island"] = false,
+		["Tween To Prehistoric Island"] = false,
+		["Auto Kill Lava Golem"] = false
+	},
+	Race = {
+		["Auto Race V2"] = false,
+		["Auto Race V3"] = false,
+		["Selected Place"] = nil,
+		["Teleport To Place"] = false,
+		["Auto Buy Gear"] = false,
+		["Tween To Highest Mirage"] = false,
+		["Find Blue Gear"] = false,
+		["Look Moon Ability"] = false,
+		["Auto Train"] = false,
+		["Auto Kill Player After Trial"] = false,
+		["Auto Trial"] = false
+	},
+	Combat = {
+		["Auto Kill Player Quest"] = false,
+		["Aimbot Gun"] = false,
+		["Aimbot Skill Neares"] = false,
+		["Aimbot Skill"] = false,
+		["Enable PvP"] = false
+	},
+	Raid = {
+		["Selected Chip"] = nil,
+		["Auto Raid"] = false,
+		["Auto Awaken"] = false,
+		["Price Devil Fruit"] = 1000000,
+		["Unstore Devil Fruit"] = false,
+		["Law Raid"] = false
+	},
+	Shop = {
+		["Auto Buy Legendary Sword"] = false,
+		["Auto Buy Haki Color"] = false
+	},
+	LocalPlayer = {
+		["Infinite Energy"] = false,
+		["Infinite Ability"] = true,
+		["Infinite Geppo"] = false,
+		["Infinite Soru"] = false,
+		["Dodge No Cooldown"] = false,
+		["Active Race V3"] = false,
+		["Active Race V4"] = true,
+		["Walk On Water"] = true,
+		["No Clip"] = false
+	},
+	Fruit = {
+		["Auto Buy Random Fruit"] = false,
+		["Store Rarity Fruit"] = "Common - Mythical",
+		["Auto Store Fruit"] = false,
+		["Fruit Notification"] = false,
+		["Teleport To Fruit"] = false,
+		["Tween To Fruit"] = false
+	},
+	Misc = {
+		["Hide Chat"] = false,
+		["Hide Leaderboard"] = false,
+		["Highlight Mode"] = false
+	}
+};
 (getgenv()).Load = function()
 	if readfile and writefile and isfile and isfolder then
 		if not isfolder("Relz Hub New") then
