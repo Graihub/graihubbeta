@@ -1,11 +1,3 @@
--- Grai Hub (UI custom) + loader for core farm (graimain)
--- Merged UI file by assistant — binds UI to _G.Settings and auto-loads core farm.
--- Instructions:
--- 1) If you have the full core script saved as a local file in your executor, name it "graimain.txt" or "graimain.lua".
--- 2) Otherwise set CORE_RAW_URL to a raw paste URL (Pastebin/Gist/GitHub raw) that returns the full core script.
--- 3) Run this script in your executor.
-
--- --------------------
 -- CONFIG: set core URL if you want remote load
 local CORE_RAW_URL = "PASTE_GRAIMAIN_RAW_URL_HERE" -- replace with raw file URL if needed
 -- --------------------
