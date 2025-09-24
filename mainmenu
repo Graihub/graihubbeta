@@ -1,7 +1,5 @@
--- discord.gg/tboyroblox
 
-
-shared.LoaderTitle = "Đăng Ký Kênh TBoy Roblox";
+shared.LoaderTitle = "W BelBel";
 shared.LoaderKeyFrames = {
     [1] = {
         1,
@@ -96,7 +94,7 @@ local v7 = CreateObject("ImageLabel", {
     Name = "UserImage",
     Parent = v6,
     BackgroundTransparency = 1,
-    Image = "rbxassetid://83190276951914",
+    Image = "rbxassetid://133835513968402",
     Position = UDim2.new(0, 15, 0, 10),
     Size = UDim2.new(0, 50, 0, 50)
 });
@@ -105,7 +103,7 @@ local v8 = CreateObject("TextLabel", {
     Name = "UserName",
     Parent = v6,
     BackgroundTransparency = 1,
-    Text = "Youtube: TBoy Roblox",
+    Text = "Grai Hub",
     Position = UDim2.new(0, 75, 0, 10),
     Size = UDim2.new(0, 200, 0, 50),
     Font = Enum.Font.GothamBold,
@@ -313,7 +311,7 @@ v5:Destroy();
 -- end);
 local v14 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))();
 local v15 = v14:CreateWindow({
-    Title = "TBoy Roblox Hub",
+    Title = "Grai Hub",
     SubTitle = "Blox Fruit",
     TabWidth = 160,
     Theme = "Dark",
@@ -1041,69 +1039,69 @@ function CheckLevel()
             CFrameQ = CFrame.new(10767.1, -2090.9, 9363.1)
             CFrameMon = CFrame.new(11021.3, -2076.2, 9254.4)
 
-    elseif (v197 >= 2625 and v197 <= 2649) or (SelectMonster == "Isle Champion") then
+        elseif (v197 >= 2625 and v197 <= 2649) or (SelectMonster == "Isle Champion") then
            Ms = "Isle Champion"
            NameQuest = "TikiQuest3"
            QuestLv = 2
            NameMon = "Isle Champion"
            CFrameQ = CFrame.new(10767.1, -2090.9, 9363.1)
-    CFrameMon = CFrame.new(10836.5, -2096.3, 9615.8)
+           CFrameMon = CFrame.new(10836.5, -2096.3, 9615.8)
 
-elseif (v197 >= 2650 and v197 <= 2674) or (SelectMonster == "Serpent Hunter") then
-    Ms = "Serpent Hunter"
-    NameQuest = "TikiQuest4"
-    QuestLv = 1
-    NameMon = "Serpent Hunter"
-    CFrameQ = CFrame.new(10767.1, -2090.9, 9363.1)
-    CFrameMon = CFrame.new(11077.0, -2090.9, 9836.6)
+       elseif (v197 >= 2650 and v197 <= 2674) or (SelectMonster == "Serpent Hunter") then
+           Ms = "Serpent Hunter"
+           NameQuest = "TikiQuest4"
+           QuestLv = 1
+           NameMon = "Serpent Hunter"
+           CFrameQ = CFrame.new(10767.1, -2090.9, 9363.1)
+           CFrameMon = CFrame.new(11077.0, -2090.9, 9836.6)
 
-elseif (v197 >= 2675 and v197 <= 2699) or (SelectMonster == "Skull Slayer") then
-    Ms = "Skull Slayer"
-    NameQuest = "TikiQuest4"
-    QuestLv = 2
-    NameMon = "Skull Slayer"
-    CFrameQ = CFrame.new(10767.1, -2090.9, 9363.1)
-    CFrameMon = CFrame.new(11346.7, -2089.8, 9649.1)
+       elseif (v197 >= 2675 and v197 <= 2699) or (SelectMonster == "Skull Slayer") then
+           Ms = "Skull Slayer"
+           NameQuest = "TikiQuest4"
+           QuestLv = 2
+           NameMon = "Skull Slayer"
+           CFrameQ = CFrame.new(10767.1, -2090.9, 9363.1)
+           CFrameMon = CFrame.new(11346.7, -2089.8, 9649.1)
 
-elseif (v197 >= 2700 and v197 <= 2724) or (SelectMonster == "Shark Gladiator") then
-    Ms = "Shark Gladiator"
-    NameQuest = "SharkQuest1"
-    QuestLv = 1
-    NameMon = "Shark Gladiator"
-    CFrameQ = CFrame.new(11855.3, -2194.7, 9289.2)
-    CFrameMon = CFrame.new(12032.8, -2197.5, 9408.9)
+      elseif (v197 >= 2700 and v197 <= 2724) or (SelectMonster == "Shark Gladiator") then
+           Ms = "Shark Gladiator"
+           NameQuest = "SharkQuest1"
+           QuestLv = 1
+           NameMon = "Shark Gladiator"
+           CFrameQ = CFrame.new(11855.3, -2194.7, 9289.2)
+           CFrameMon = CFrame.new(12032.8, -2197.5, 9408.9)
 
-elseif (v197 >= 2725 and v197 <= 2749) or (SelectMonster == "Ocean Champion") then
-    Ms = "Ocean Champion"
-    NameQuest = "SharkQuest1"
-    QuestLv = 2
-    NameMon = "Ocean Champion"
-    CFrameQ = CFrame.new(11855.3, -2194.7, 9289.2)
-    CFrameMon = CFrame.new(12234.5, -2198.7, 9221.6)
+      elseif (v197 >= 2725 and v197 <= 2749) or (SelectMonster == "Ocean Champion") then
+           Ms = "Ocean Champion"
+           NameQuest = "SharkQuest1"
+           QuestLv = 2
+           NameMon = "Ocean Champion"
+           CFrameQ = CFrame.new(11855.3, -2194.7, 9289.2)
+           CFrameMon = CFrame.new(12234.5, -2198.7, 9221.6)
 
-elseif (v197 >= 2750 and v197 <= 2774) or (SelectMonster == "Depth Guardian") then
-    Ms = "Depth Guardian"
-    NameQuest = "SharkQuest2"
-    QuestLv = 1
-    NameMon = "Depth Guardian"
-    CFrameQ = CFrame.new(11855.3, -2194.7, 9289.2)
-    CFrameMon = CFrame.new(12478.9, -2196.2, 9442.5)
+     elseif (v197 >= 2750 and v197 <= 2774) or (SelectMonster == "Depth Guardian") then
+           Ms = "Depth Guardian"
+           NameQuest = "SharkQuest2"
+           QuestLv = 1
+           NameMon = "Depth Guardian"
+           CFrameQ = CFrame.new(11855.3, -2194.7, 9289.2)
+           CFrameMon = CFrame.new(12478.9, -2196.2, 9442.5)
 
-elseif (v197 >= 2775 and v197 <= 2799) or (SelectMonster == "Sea Emperor") then
-    Ms = "Sea Emperor"
-    NameQuest = "SharkQuest2"
-    QuestLv = 2
-    NameMon = "Sea Emperor"
-    CFrameQ = CFrame.new(11855.3, -2194.7, 9289.2)
-    CFrameMon = CFrame.new(12654.3, -2195.1, 9645.7)
+    elseif (v197 >= 2775 and v197 <= 2799) or (SelectMonster == "Sea Emperor") then
+           Ms = "Sea Emperor"
+           NameQuest = "SharkQuest2"
+           QuestLv = 2
+           NameMon = "Sea Emperor"
+           CFrameQ = CFrame.new(11855.3, -2194.7, 9289.2)
+           CFrameMon = CFrame.new(12654.3, -2195.1, 9645.7)
 
-elseif (v197 >= 2800) or (SelectMonster == "Skeleton King") then
-    Ms = "Skeleton King"
-    NameQuest = "HauntedQuest3"
-    QuestLv = 3
-    NameMon = "Skeleton King"
-    CFrameQ = CFrame.new(13012.6, -2101.3, 10221.4)
-    CFrameMon = CFrame.new(13234.8, -2098.5, 10145.2)
+    elseif (v197 >= 2800) or (SelectMonster == "Skeleton King") then
+           Ms = "Skeleton King"
+           NameQuest = "HauntedQuest3"
+           QuestLv = 3
+           NameMon = "Skeleton King"
+           CFrameQ = CFrame.new(13012.6, -2101.3, 10221.4)
+           CFrameMon = CFrame.new(13234.8, -2098.5, 10145.2)
 
         end
     end
@@ -4759,7 +4757,7 @@ if Sea3 then
         end
         for v728, v729 in pairs(game:GetService("Workspace").Map.MysticIsland:GetDescendants()) do
             if v729:IsA("MeshPart") then
-                if (v729.MeshId == "rbxassetid://83190276951914") then
+                if (v729.MeshId == "rbxassetid://133835513968402") then
                     return v729;
                 end
             end
