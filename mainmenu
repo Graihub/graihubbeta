@@ -751,30 +751,30 @@ toggleButton.MouseButton1Click:Connect(function()
     end
 end)
 local Tabs = {
-  Main = Window:AddTab({Title = "Tab Farming",
-  Settings = Window:AddTab({Title = "Tab Setting Farm",
-  Melee = Window:AddTab({Title = "Tab Auto Get Melee V2",
-  Quests = Window:AddTab({Title = "Tab Items Farm",
-  SeaEvent = Window:AddTab({Title = "Tab Sea Events",
-  Mirage = Window:AddTab({Title = "Tab Mirage + RaceV4",
-  Drago = Window:AddTab({Title = "Tab Drago Dojo",
-  Prehistoric = Window:AddTab({Title = "Tab Prehistoric",
-  Raids = Window:AddTab({Title = "Tab Raid",
-  Combat = Window:AddTab({Title = "Tab Combat PVP",
-  Travel = Window:AddTab({Title = "Tab Teleport", 
-  Fruit = Window:AddTab({Title = "Tab Fruits",
-  Shop = Window:AddTab({Title = "Tab Shop", 
-  Misc = Window:AddTab({Title = "Tab Misc",
+  Main = Window:AddTab({Title = "Tab Farming", Icon = "rbxassetid://"}),
+  Settings = Window:AddTab({Title = "Tab Setting Farm", Icon = "rbxassetid://"}),
+  Melee = Window:AddTab({Title = "Tab Auto Get Melee V2", Icon = "rbxassetid://"}),
+  Quests = Window:AddTab({Title = "Tab Items Farm", Icon = "rbxassetid://"}),
+  SeaEvent = Window:AddTab({Title = "Tab Sea Events", Icon = "rbxassetid://"}),
+  Mirage = Window:AddTab({Title = "Tab Mirage + RaceV4", Icon = "rbxassetid://"}),
+  Drago = Window:AddTab({Title = "Tab Drago Dojo", Icon = "rbxassetid://"}),
+  Prehistoric = Window:AddTab({Title = "Tab Prehistoric", Icon = "rbxassetid://"}),
+  Raids = Window:AddTab({Title = "Tab Raid", Icon = "rbxassetid://"}),
+  Combat = Window:AddTab({Title = "Tab Combat PVP", Icon = "rbxassetid://"}),
+  Travel = Window:AddTab({Title = "Tab Teleport", Icon = "rbxassetid://"}),
+  Fruit = Window:AddTab({Title = "Tab Fruits", Icon = "rbxassetid://"}),
+  Shop = Window:AddTab({Title = "Tab Shop", Icon = "rbxassetid://"}),
+  Misc = Window:AddTab({Title = "Tab Misc", Icon = "rbxassetid://"})
 }
 
 Tabs.Main:AddButton({
         Title="Link Join Sever Discord",
-        Description="https://discord.gg/mrreuPH7zN",
+        Description="discord.gg/kK2vMrUsQy",
         Callback=function()
-            setclipboard(tostring("https://discord.gg/mrreuPH7zN")) 
+            setclipboard(tostring("https://discord.gg/kK2vMrUsQy")) 
         end
 })
-Tabs.Main:AddSection("BelBelDepzai")
+Tabs.Main:AddSection("Tuấn Anh IOS Đẹp Zai Hẹ Hẹ")
 local FarmLevel = Tabs.Main:AddToggle("FarmLevel", {Title = "Auto Farm Level", Description = "Update Cày Level 2650-2750 New", Default = false})
 FarmLevel:OnChanged(function(Value)
   _G.Level = Value
