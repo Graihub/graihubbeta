@@ -656,8 +656,8 @@ end
 
 local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/AnhTuanDzai-Hub/UIMenu/refs/heads/main/TuanAnhIOS/Uifluent.lua"))()
 local Window = Fluent:CreateWindow({
-    Title="Grai Hub",
-    SubTitle="  by belbel", 
+    Title="Tuấn Anh IOS [ Premium ]",
+    SubTitle="  by tuananhiosdz", 
     TabWidth=160, 
     Theme="TuanAnhIOS",
     Acrylic=false,
@@ -750,6 +750,23 @@ toggleButton.MouseButton1Click:Connect(function()
         Window:Minimize(true) -- Thu nhỏ cửa sổ
     end
 end)
+local Tabs = {
+  Main = Window:AddTab({Title = "Tab Farming",
+  Settings = Window:AddTab({Title = "Tab Setting Farm",
+  Melee = Window:AddTab({Title = "Tab Auto Get Melee V2",
+  Quests = Window:AddTab({Title = "Tab Items Farm",
+  SeaEvent = Window:AddTab({Title = "Tab Sea Events",
+  Mirage = Window:AddTab({Title = "Tab Mirage + RaceV4",
+  Drago = Window:AddTab({Title = "Tab Drago Dojo",
+  Prehistoric = Window:AddTab({Title = "Tab Prehistoric",
+  Raids = Window:AddTab({Title = "Tab Raid",
+  Combat = Window:AddTab({Title = "Tab Combat PVP",
+  Travel = Window:AddTab({Title = "Tab Teleport", 
+  Fruit = Window:AddTab({Title = "Tab Fruits",
+  Shop = Window:AddTab({Title = "Tab Shop", 
+  Misc = Window:AddTab({Title = "Tab Misc",
+}
+
 Tabs.Main:AddButton({
         Title="Link Join Sever Discord",
         Description="https://discord.gg/mrreuPH7zN",
@@ -757,7 +774,7 @@ Tabs.Main:AddButton({
             setclipboard(tostring("https://discord.gg/mrreuPH7zN")) 
         end
 })
-Tabs.Main:AddSection("BelBelDepzaiVl")
+Tabs.Main:AddSection("BelBelDepzai")
 local FarmLevel = Tabs.Main:AddToggle("FarmLevel", {Title = "Auto Farm Level", Description = "Update Cày Level 2650-2750 New", Default = false})
 FarmLevel:OnChanged(function(Value)
   _G.Level = Value
