@@ -750,31 +750,14 @@ toggleButton.MouseButton1Click:Connect(function()
         Window:Minimize(true) -- Thu nhỏ cửa sổ
     end
 end)
-local Tabs = {
-  Main = Window:AddTab({Title = "Tab Farming", Icon = "rbxassetid://133835513968402"}),
-  Settings = Window:AddTab({Title = "Tab Setting Farm", Icon = "rbxassetid://133835513968402"}),
-  Melee = Window:AddTab({Title = "Tab Auto Get Melee V2", Icon = "rbxassetid://133835513968402"}),
-  Quests = Window:AddTab({Title = "Tab Items Farm", Icon = "rbxassetid://133835513968402"}),
-  SeaEvent = Window:AddTab({Title = "Tab Sea Events", Icon = "rbxassetid://133835513968402"}),
-  Mirage = Window:AddTab({Title = "Tab Mirage + RaceV4", Icon = "rbxassetid://133835513968402"}),
-  Drago = Window:AddTab({Title = "Tab Drago Dojo", Icon = "rbxassetid://133835513968402"}),
-  Prehistoric = Window:AddTab({Title = "Tab Prehistoric", Icon = "rbxassetid://133835513968402"}),
-  Raids = Window:AddTab({Title = "Tab Raid", Icon = "rbxassetid://133835513968402"}),
-  Combat = Window:AddTab({Title = "Tab Combat PVP", Icon = "rbxassetid://133835513968402"}),
-  Travel = Window:AddTab({Title = "Tab Teleport", Icon = "rbxassetid://133835513968402"}),
-  Fruit = Window:AddTab({Title = "Tab Fruits", Icon = "rbxassetid://133835513968402"}),
-  Shop = Window:AddTab({Title = "Tab Shop", Icon = "rbxassetid://133835513968402"}),
-  Misc = Window:AddTab({Title = "Tab Misc", Icon = "rbxassetid://133835513968402"})
-}
-
 Tabs.Main:AddButton({
         Title="Link Join Sever Discord",
-        Description="discord.gg/kK2vMrUsQy",
+        Description="https://discord.gg/mrreuPH7zN",
         Callback=function()
-            setclipboard(tostring("https://discord.gg/kK2vMrUsQy")) 
+            setclipboard(tostring("https://discord.gg/mrreuPH7zN")) 
         end
 })
-Tabs.Main:AddSection("Tuấn Anh IOS Đẹp Zai Hẹ Hẹ")
+Tabs.Main:AddSection("BelBelDepzaiVl")
 local FarmLevel = Tabs.Main:AddToggle("FarmLevel", {Title = "Auto Farm Level", Description = "Update Cày Level 2650-2750 New", Default = false})
 FarmLevel:OnChanged(function(Value)
   _G.Level = Value
