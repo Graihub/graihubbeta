@@ -2123,7 +2123,7 @@
 		Title = "Link Join Sever Discord",
 		Description = "https://discord.gg/qVa6jedW9p",
 		Callback = function()
-			setclipboard(tostring("https://discord.gg/s8R9b5NfsU"))
+			setclipboard(tostring("https://discord.gg/qVa6jedW9p"))
 		end
 	})
 	local ReplicatedStorage = game:GetService("ReplicatedStorage")
