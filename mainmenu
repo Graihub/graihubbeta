@@ -2073,7 +2073,7 @@
 	end)
 	local Tabs = {
 		Discord = Window:AddTab({
-			Title = "Disord"
+			Title = "Discord"
 		}),
 		Server = Window:AddTab({
 			Title = "Server"
@@ -2121,7 +2121,7 @@
 
 	Tabs.Discord:AddButton({
 		Title = "Link Join Sever Discord",
-		Description = "Đây nha anh em ( Copy rồi dán vào trình duyệt )",
+		Description = "https://discord.gg/qVa6jedW9p",
 		Callback = function()
 			setclipboard(tostring("https://discord.gg/s8R9b5NfsU"))
 		end
