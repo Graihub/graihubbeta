@@ -3061,45 +3061,6 @@ spawn(function()
 		end)
 	end
 end)
-L_1_[93]["Main"]:AddSection({
-	"Christmas Multi"
-})
-L_1_[125] = function()
-	local L_261_ = {}
-	L_261_[1] = _G["SelectedGiftMap"]
-	pcall(function()
-		if plr["PlayerGui"]["Main"]["Quest"]["Visible"] then
-			replicated["Remotes"]["CommF_"]:InvokeServer("AbandonQuest")
-			task["wait"](.5)
-		end
-		if L_261_[1] == "GiftMap1" then
-			local L_262_ = {}
-			L_262_[2] = {
-				[1] = "requestEntrance",
-				[2] = Vector3["new"](3864.6879882812, 6.7369995117188, -1926.2139892578)
-			};
-			(game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer(unpack(L_262_[2]))
-			task["wait"](2)
-		elseif L_261_[1] == "GiftMap2" then
-			task["spawn"](function()
-				local L_263_ = {}
-				L_263_[1] = (game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]
-				pcall(function()
-					L_263_[1]:InvokeServer("SetLastSpawnPoint", "Ship")
-				end)
-				pcall(function()
-					L_263_[1]:InvokeServer("requestEntrance", Vector3["new"](-6508.558, 89.035, -132.84))
-				end)
-			end)
-			task["wait"](2)
-		elseif L_261_[1] == "GiftMap3" then
-			task["spawn"](function()
-				local L_264_ = {}
-				L_264_[1] = (game:GetService("Players"))["LocalPlayer"]
-				L_264_[3] = L_264_[1]["Character"] and L_264_[1]["Character"]:FindFirstChild("HumanoidRootPart")
-				if L_264_[3] then
-					L_264_[3]["CFrame"] = CFrame["new"](28286.35546875, 14895.301757812, 102.62469482422)
-				end
 				if not(game:GetService("Workspace"))["Map"]:FindFirstChild("Temple of Time") and World3 then
 					local L_265_ = {}
 					L_265_[2] = (game:GetService("ReplicatedStorage")):FindFirstChild("MapStash")
@@ -3431,27 +3392,6 @@ task["spawn"](function()
 		end
 	end
 end)
-L_1_[93]["Main"]:AddSection({
-	"Christmas Event"
-})
-Countdown = L_1_[93]["Main"]:AddParagraph({
-	["Title"] = "Time Gift Christmas";
-	["Content"] = ""
-})
-L_1_[79] = 7200
-L_1_[127] = function()
-	local L_290_ = {}
-	L_290_[1] = os["time"]()
-	L_290_[3] = L_290_[1] % L_1_[79]
-	return L_1_[79] - L_290_[3]
-end
-L_1_[135] = function()
-	local L_291_ = {}
-	L_291_[2] = L_1_[127]()
-	if L_291_[2] <= 0 then
-		Countdown:SetDesc("Ready!")
-		return
-	end
 	L_291_[3] = math["floor"](L_291_[2] / 3600)
 	L_291_[4] = math["floor"]((L_291_[2] % 3600) / 60)
 	L_291_[1] = L_291_[2] % 60
@@ -3463,45 +3403,7 @@ task["spawn"](function()
 		task["wait"](1)
 	end
 end)
-L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm Candy",
-	["Description"] = "";
-	["Default"] = false,
-	["Callback"] = function(L_292_arg0)
-		local L_293_ = {}
-		L_293_[1] = L_292_arg0
-		_G["AutoFarmCandy"] = L_293_[1]
-		if not L_293_[1] then
-			L_1_[84] = false
-			L_1_[40] = false
-		end
-	end
 })
-L_1_[109] = false
-L_1_[107] = false
-spawn(function()
-	while wait(Sec) do
-		if _G["AutoFarmCandy"] then
-			pcall(function()
-				local L_294_ = {}
-				L_294_[1] = L_1_[136]["Character"] or L_1_[136]["CharacterAdded"]:Wait()
-				L_294_[5] = L_294_[1]:WaitForChild("HumanoidRootPart")
-				L_294_[2] = L_1_[136]["Data"]["Level"]["Value"]
-				L_294_[4] = L_1_[124]()
-				if L_294_[2] >= 2600 and (not L_294_[4] and (not L_1_[107] and not L_1_[109])) then
-					local L_295_ = {}
-					L_1_[107] = true
-					L_295_[3] = CFrame["new"](-16269.7041, 25.2288494, 1373.65955, .997390985, 1.47309942e-09, -0.0721890926, -4.00651912e-09, .99999994, -2.51183763e-09, .0721890852, 5.75363091e-10, .997390926)
-					L_295_[4] = 0
-					repeat
-						task["wait"](Sec)
-						_tp(L_295_[3])
-						L_295_[4] = L_295_[4] + 1
-					until not _G["AutoFarmCandy"] or (L_294_[5]["Position"] - L_295_[3]["Position"])["Magnitude"] <= 8 or L_295_[4] > 20
-					if not _G["AutoFarmCandy"] then
-						L_1_[107] = false
-						return
-					end
 					task["wait"](1)
 					pcall(function()
 						local L_296_ = {}
@@ -3814,143 +3716,6 @@ spawn(function()
 		end
 	end
 end)
-L_1_[93]["Main"]:AddSection({
-	"Christmas Shop"
-})
-L_1_[93]["Main"]:AddButton({
-	["Name"] = "Buy 200 Frangments",
-	["Description"] = "50 Candy",
-	["Callback"] = function()
-		pcall(function()
-			local L_339_ = {}
-			L_339_[1] = {
-				[1] = "Candies";
-				[2] = "Buy";
-				[3] = 2;
-				[4] = 1
-			};
-			(game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer(unpack(L_339_[1]))
-		end)
-	end
-})
-L_1_[93]["Main"]:AddButton({
-	["Name"] = "Buy 500 Frangments",
-	["Description"] = "100 Candy",
-	["Callback"] = function()
-		pcall(function()
-			local L_340_ = {}
-			L_340_[2] = {
-				[1] = "Candies";
-				[2] = "Buy";
-				[3] = 2,
-				[4] = 2
-			};
-			(game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer(unpack(L_340_[2]))
-		end)
-	end
-})
-L_1_[93]["Main"]:AddButton({
-	["Name"] = L_1_[2]({
-		"Buy x2 EXP ( 15 Minu",
-		"tes )"
-	});
-	["Description"] = "75 Candy",
-	["Callback"] = function()
-		pcall(function()
-			local L_341_ = {}
-			L_341_[1] = {
-				[1] = "Candies",
-				[2] = "Buy";
-				[3] = 1,
-				[4] = 1
-			};
-			(game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer(unpack(L_341_[1]))
-		end)
-	end
-})
-L_1_[93]["Main"]:AddButton({
-	["Name"] = "Buy Stats Refund";
-	["Description"] = "75 Candy",
-	["Callback"] = function()
-		pcall(function()
-			local L_342_ = {}
-			L_342_[1] = {
-				[1] = "Candies";
-				[2] = "Buy";
-				[3] = 1,
-				[4] = 2
-			};
-			(game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer(unpack(L_342_[1]))
-		end)
-	end
-})
-L_1_[93]["Main"]:AddButton({
-	["Name"] = "Buy Race Reroll",
-	["Description"] = "100 Candy",
-	["Callback"] = function()
-		pcall(function()
-			local L_343_ = {}
-			L_343_[2] = {
-				[1] = "Candies";
-				[2] = "Buy";
-				[3] = 1,
-				[4] = 3
-			};
-			(game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer(unpack(L_343_[2]))
-		end)
-	end
-})
-L_1_[93]["Main"]:AddSection({
-	"Christmas Items"
-})
-L_1_[93]["Main"]:AddButton({
-	["Name"] = "Buy Elf Hat",
-	["Description"] = "250 Candy";
-	["Callback"] = function()
-		pcall(function()
-			local L_344_ = {}
-			L_344_[1] = {
-				[1] = "Candies";
-				[2] = "Buy",
-				[3] = 3;
-				[4] = 1
-			};
-			(game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer(unpack(L_344_[1]))
-		end)
-	end
-})
-L_1_[93]["Main"]:AddButton({
-	["Name"] = "Buy Santa Hat";
-	["Description"] = "500 Candy",
-	["Callback"] = function()
-		pcall(function()
-			local L_345_ = {}
-			L_345_[2] = {
-				[1] = "Candies",
-				[2] = "Buy",
-				[3] = 3,
-				[4] = 2
-			};
-			(game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer(unpack(L_345_[2]))
-		end)
-	end
-})
-L_1_[93]["Main"]:AddButton({
-	["Name"] = "Buy Sleigh",
-	["Description"] = "1000 Candy",
-	["Callback"] = function()
-		pcall(function()
-			local L_346_ = {}
-			L_346_[2] = {
-				[1] = "Candies";
-				[2] = "Buy";
-				[3] = 3,
-				[4] = 3
-			};
-			(game:GetService("ReplicatedStorage"))["Remotes"]["CommF_"]:InvokeServer(unpack(L_346_[2]))
-		end)
-	end
-})
 L_1_[93]["Main"]:AddSection({
 	"Collect Chest"
 })
