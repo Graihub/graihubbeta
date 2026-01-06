@@ -3061,17 +3061,6 @@ spawn(function()
 		end)
 	end
 end)
-L_1_[93]["Main"]:AddSection({
-	"Christmas Multi"
-})
-L_1_[125] = function()
-	local L_261_ = {}
-	L_261_[1] = _G["SelectedGiftMap"]
-	pcall(function()
-		if plr["PlayerGui"]["Main"]["Quest"]["Visible"] then
-			replicated["Remotes"]["CommF_"]:InvokeServer("AbandonQuest")
-			task["wait"](.5)
-		end
 		if L_261_[1] == "GiftMap1" then
 			local L_262_ = {}
 			L_262_[2] = {
@@ -3139,11 +3128,6 @@ _G["AutoTPAndCollect"] = false
 _G["EntranceDone"] = false
 _G["IsProcessingRemote"] = false
 _G["GiftWarnTime"] = 300
-L_1_[139] = function()
-	local L_267_ = {}
-	L_267_[1] = 7200
-	return L_267_[1] - os["time"]() % L_267_[1]
-end
 L_1_[124] = function()
 	local L_268_ = {}
 	L_268_[3] = L_1_[136]["Character"]
@@ -3439,69 +3423,11 @@ Countdown = L_1_[93]["Main"]:AddParagraph({
 	["Content"] = ""
 })
 L_1_[79] = 7200
-L_1_[127] = function()
-	local L_290_ = {}
-	L_290_[1] = os["time"]()
-	L_290_[3] = L_290_[1] % L_1_[79]
-	return L_1_[79] - L_290_[3]
-end
-L_1_[135] = function()
-	local L_291_ = {}
-	L_291_[2] = L_1_[127]()
-	if L_291_[2] <= 0 then
-		Countdown:SetDesc("Ready!")
-		return
-	end
 	L_291_[3] = math["floor"](L_291_[2] / 3600)
 	L_291_[4] = math["floor"]((L_291_[2] % 3600) / 60)
 	L_291_[1] = L_291_[2] % 60
 	Countdown:SetDesc(string["format"]("%02d:%02d:%02d", L_291_[3], L_291_[4], L_291_[1]))
 end
-task["spawn"](function()
-	while true do
-		L_1_[135]()
-		task["wait"](1)
-	end
-end)
-L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm Candy",
-	["Description"] = "";
-	["Default"] = false,
-	["Callback"] = function(L_292_arg0)
-		local L_293_ = {}
-		L_293_[1] = L_292_arg0
-		_G["AutoFarmCandy"] = L_293_[1]
-		if not L_293_[1] then
-			L_1_[84] = false
-			L_1_[40] = false
-		end
-	end
-})
-L_1_[109] = false
-L_1_[107] = false
-spawn(function()
-	while wait(Sec) do
-		if _G["AutoFarmCandy"] then
-			pcall(function()
-				local L_294_ = {}
-				L_294_[1] = L_1_[136]["Character"] or L_1_[136]["CharacterAdded"]:Wait()
-				L_294_[5] = L_294_[1]:WaitForChild("HumanoidRootPart")
-				L_294_[2] = L_1_[136]["Data"]["Level"]["Value"]
-				L_294_[4] = L_1_[124]()
-				if L_294_[2] >= 2600 and (not L_294_[4] and (not L_1_[107] and not L_1_[109])) then
-					local L_295_ = {}
-					L_1_[107] = true
-					L_295_[3] = CFrame["new"](-16269.7041, 25.2288494, 1373.65955, .997390985, 1.47309942e-09, -0.0721890926, -4.00651912e-09, .99999994, -2.51183763e-09, .0721890852, 5.75363091e-10, .997390926)
-					L_295_[4] = 0
-					repeat
-						task["wait"](Sec)
-						_tp(L_295_[3])
-						L_295_[4] = L_295_[4] + 1
-					until not _G["AutoFarmCandy"] or (L_294_[5]["Position"] - L_295_[3]["Position"])["Magnitude"] <= 8 or L_295_[4] > 20
-					if not _G["AutoFarmCandy"] then
-						L_1_[107] = false
-						return
-					end
 					task["wait"](1)
 					pcall(function()
 						local L_296_ = {}
@@ -3525,10 +3451,6 @@ spawn(function()
 						if L_297_[3] or L_297_[1] then
 							break
 						end
-					until not _G["AutoFarmCandy"] or tick() - L_295_[2] > 15
-					task["wait"](2)
-					L_1_[109] = true
-					L_1_[107] = false
 				elseif L_294_[4] or L_294_[2] < 2600 then
 					local L_298_ = {}
 					L_1_[109] = true
@@ -3547,45 +3469,6 @@ spawn(function()
 							end
 						end
 					end
-					if L_298_[3] then
-						repeat
-							task["wait"]()
-							_tp(L_298_[3]["HumanoidRootPart"]["CFrame"] * CFrame["new"](0, 10, 0))
-							L_1_[4]["Kill"](L_298_[3], _G["AutoFarmCandy"])
-						until not _G["AutoFarmCandy"] or not L_298_[3]["Parent"] or L_298_[3]["Humanoid"]["Health"] <= 0 or (L_294_[5]["Position"] - L_298_[3]["HumanoidRootPart"]["Position"])["Magnitude"] > 1100
-					else
-						local L_303_ = {}
-						L_303_[2] = (QuestNeta())[4]
-						if L_303_[2] then
-							_tp(L_303_[2])
-						end
-					end
-				end
-			end)
-		end
-	end
-end)
-L_1_[58] = CFrame["new"](521.277832, 9.30464935, -3339.21753, .563576221, 0, .82606405, 0, 1, 0, -0.82606405, 0, .563576221)
-L_1_[28] = CFrame["new"](-5405.59082, 8.06555939, 1451.85144, -0.987686276, 0, .156449571, 0, 1, 0, -0.156449571, 0, -0.987686276)
-L_1_[94] = CFrame["new"](-1093.90479, 59.8575134, -14520.4658, -1, 0, 0, 0, 1, 0, 0, 0, -1)
-L_1_[6] = {
-	["GiftMap1"] = L_1_[58],
-	["GiftMap2"] = L_1_[28],
-	["GiftMap3"] = L_1_[94]
-}
-L_1_[93]["Main"]:AddDropdown({
-	["Name"] = "Select Island Gift";
-	["Options"] = {
-		"GiftMap1",
-		"GiftMap2",
-		"GiftMap3"
-	},
-	["Callback"] = function(L_304_arg0)
-		local L_305_ = {}
-		L_305_[1] = L_304_arg0
-		_G["SelectedGiftMap"] = L_305_[1]
-	end
-})
 L_1_[93]["Main"]:AddToggle({
 	["Name"] = L_1_[2]({
 		"Teleport To Island G";
