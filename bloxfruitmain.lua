@@ -317,19 +317,19 @@ task["spawn"](function()
 	while task["wait"]() do
 		local L_27_ = {}
 		L_27_[4] = L_1_[6]:Create(L_1_[12], TweenInfo["new"](1.2, Enum["EasingStyle"]["Quad"], Enum["EasingDirection"]["Out"]), {
-			["Color"] = Color3["fromRGB"](200, 255, 200)
+			["Color"] = Color3["fromRGB"](80, 200, 80)
 		})
 		L_27_[5] = L_1_[6]:Create(L_1_[12], TweenInfo["new"](1.2, Enum["EasingStyle"]["Quad"], Enum["EasingDirection"]["Out"]), {
 			["Color"] = Color3["fromRGB"](80, 200, 80)
 		})
 		L_27_[2] = L_1_[6]:Create(L_1_[15], TweenInfo["new"](1.2), {
-			["TextColor3"] = Color3["fromRGB"](200, 255, 200)
+			["TextColor3"] = Color3["fromRGB"](80, 200, 80)
 		})
 		L_27_[3] = L_1_[6]:Create(L_1_[15], TweenInfo["new"](1.2), {
 			["TextColor3"] = Color3["fromRGB"](80, 200, 80)
 		})
 		L_27_[1] = L_1_[6]:Create(L_1_[26], TweenInfo["new"](1.2), {
-			["TextColor3"] = Color3["fromRGB"](200, 255, 200)
+			["TextColor3"] = Color3["fromRGB"](80, 200, 80)
 		})
 		L_27_[7] = L_1_[6]:Create(L_1_[26], TweenInfo["new"](1.2), {
 			["TextColor3"] = Color3["fromRGB"](80, 200, 80)
@@ -7718,6 +7718,7 @@ task["spawn"](function()
 		end)
 	end
 end)
+
 
 
 
