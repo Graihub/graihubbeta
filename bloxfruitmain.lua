@@ -273,14 +273,14 @@ L_1_[42][L_1_[3]({
 	"cy"
 })] = .25
 L_1_[42]["BorderSizePixel"] = 3
-L_1_[42]["BorderColor3"] = Color3["fromRGB"](255, 220, 70)
+L_1_[42]["BorderColor3"] = Color3["fromRGB"](80, 180, 80)
 L_1_[42]["Parent"] = L_1_[11]
 L_1_[41] = Instance["new"]("UICorner")
 L_1_[41]["CornerRadius"] = UDim["new"](0, 6)
 L_1_[41]["Parent"] = L_1_[42]
 L_1_[12] = Instance["new"]("UIStroke")
 L_1_[12]["Thickness"] = 2
-L_1_[12]["Color"] = Color3["fromRGB"](255, 230, 120)
+L_1_[12]["Color"] = Color3["fromRGB"](100, 220, 100)
 L_1_[12]["ApplyStrokeMode"] = Enum["ApplyStrokeMode"]["Border"]
 L_1_[12]["Parent"] = L_1_[42]
 L_1_[15] = Instance["new"]("TextLabel")
@@ -7718,3 +7718,4 @@ task["spawn"](function()
 		end)
 	end
 end)
+
