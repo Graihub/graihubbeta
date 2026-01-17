@@ -291,7 +291,7 @@ L_1_[15][L_1_[3]({
 	"BackgroundTransparen",
 	"cy"
 })] = 1
-L_1_[15]["Text"] = "Gravity Hub - Kaitun"
+L_1_[15]["Text"] = "BelBel Hub | Kaitun"
 L_1_[15]["TextColor3"] = Color3["fromRGB"](180, 255, 180)
 L_1_[15]["TextSize"] = 18
 L_1_[15]["Font"] = Enum["Font"]["GothamBold"]
@@ -7718,6 +7718,7 @@ task["spawn"](function()
 		end)
 	end
 end)
+
 
 
 
