@@ -292,7 +292,7 @@ L_1_[15][L_1_[3]({
 	"cy"
 })] = 1
 L_1_[15]["Text"] = "Gravity Hub - Kaitun"
-L_1_[15]["TextColor3"] = Color3["fromRGB"](255, 230, 120)
+L_1_[15]["TextColor3"] = Color3["fromRGB"](180, 255, 180)
 L_1_[15]["TextSize"] = 18
 L_1_[15]["Font"] = Enum["Font"]["GothamBold"]
 L_1_[15]["TextXAlignment"] = Enum["TextXAlignment"]["Center"]
@@ -307,7 +307,7 @@ L_1_[26][L_1_[3]({
 	"cy"
 })] = 1
 L_1_[26]["Text"] = "Status : TBoy Roblox"
-L_1_[26]["TextColor3"] = Color3["fromRGB"](255, 230, 120)
+L_1_[26]["TextColor3"] = Color3["fromRGB"](180, 255, 180)
 L_1_[26]["TextSize"] = 16
 L_1_[26]["Font"] = Enum["Font"]["Gotham"]
 L_1_[26]["TextXAlignment"] = Enum["TextXAlignment"]["Center"]
@@ -7718,4 +7718,5 @@ task["spawn"](function()
 		end)
 	end
 end)
+
 
